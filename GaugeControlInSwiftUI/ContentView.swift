@@ -16,6 +16,19 @@ struct ContentView: View {
             Gauge(value: progress, in: 0...100) {
                 Text("Please wait...")
             } currentValueLabel: {
+                Text(progress.formatted())
+            } minimumValueLabel: {
+                Text(0.formatted())
+            } maximumValueLabel: {
+                Text(100.formatted())
+            }
+            .gaugeStyle(.accessoryCircularCapacity)
+            .tint(.orange)
+            .padding()
+            
+            Gauge(value: progress, in: 0...100) {
+                Text("Please wait...")
+            } currentValueLabel: {
                 Text(progress.formatted(.percent))
             } minimumValueLabel: {
                 Text(0.formatted(.percent))
