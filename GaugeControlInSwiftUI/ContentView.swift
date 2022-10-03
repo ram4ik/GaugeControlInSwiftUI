@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var progress = 0.2
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Gauge(value: progress, in: 0...100) {
+                Text("Please wait...")
+            } currentValueLabel: {
+                Text(progress.formatted(.percent))
+            } minimumValueLabel: {
+                Text(0.formatted(.percent))
+            } maximumValueLabel: {
+                Text(100.formatted(.percent))
+            }
+            
+            Slider(value: $progress, in: 0...100) {
+                Text("")
+            }
         }
         .padding()
     }
